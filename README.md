@@ -8,6 +8,23 @@ Installation
 
 Copy all files to your ~/.vim directory.
 
+Mappings
+--------
+
+This plugin sets [no default
+mappings](stevelosh.com/blog/2011/09/writing-vim-plugins/#mapping-keys-the-right-way).
+We suggest putting the following mappings in your vimrc:
+
+```
+autocmd FileType ruby map <Leader>t <Plug>RubyTestRun
+autocmd FileType ruby map <Leader>T <Plug>RubyFileRun
+autocmd FileType ruby map <Leader>l <Plug>RubyTestRunLast
+```
+
+(`<Leader>` is mapped to '\' by default in vim)
+
+The rest of this readme will assume you used these.
+
 Usage
 -----
 
@@ -20,8 +37,6 @@ $ cd <your rails/merb root>
 $ vim test/unit/user_test.rb
 ```
 (move cursor into a test case, press `<Leader>t`)
-
-(`<Leader>` is mapping to '\' by default in vim)
 
 Be default, the plugin will print output in terminal. You can change this behavior by putting this line in your vimrc file:
 
@@ -62,19 +77,6 @@ Placeholders:
 * `%s`: only for minitest, replaced by closest suite name (class whose name begin with 'Test'). This can be used to match test case more exactly:
 
     let g:rubytest_cmd_testcase = "ruby %p -n '%s#%c'"
-
-Default Key Bindings
---------------------
-
-* `<Leader>t`: run test case under cursor
-* `<Leader>T`: run all tests in file
-* `<Leader>l`: run the last test, from any buffer
-
-You can change default key bindings:
-
-    map <Leader>\ <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
-    map <Leader>] <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
-    map <Leader>/ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
 
 Tip
 ---
