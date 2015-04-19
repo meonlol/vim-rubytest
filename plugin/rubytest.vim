@@ -158,6 +158,7 @@ endfunction
 
 let s:test_patterns = {}
 let s:test_patterns['test'] = function('s:RunTest')
+let s:test_patterns['tc'] = function('s:RunTest')
 let s:test_patterns['spec'] = function('s:RunSpec')
 let s:test_patterns['\.feature$'] = function('s:RunFeature')
 
@@ -201,16 +202,6 @@ let s:test_case_patterns['feature'] = {'^\s*Scenario\( Outline\)\?:':function('s
 
 let s:save_cpo = &cpo
 set cpo&vim
-
-if !hasmapto('<Plug>RubyTestRun')
-  map <unique> <Leader>t <Plug>RubyTestRun
-endif
-if !hasmapto('<Plug>RubyFileRun')
-  map <unique> <Leader>T <Plug>RubyFileRun
-endif
-if !hasmapto('<Plug>RubyTestRunLast')
-  map <unique> <Leader>l <Plug>RubyTestRunLast
-endif
 
 function s:IsRubyTest()
   for pattern in keys(s:test_patterns)
